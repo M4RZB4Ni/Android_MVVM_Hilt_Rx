@@ -7,12 +7,6 @@ import com.android.domain.usecase.GetPhotoDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-/**
- * A helper class for the UI controller that is responsible for
- * preparing data for [PhotoDetailFragment]
- *
- * @author ZARA
- * */
 @HiltViewModel
 class PhotoDetailViewModel @Inject constructor(
     private val getPhotoDetailUseCase: com.android.domain.usecase.GetPhotoDetailUseCase
