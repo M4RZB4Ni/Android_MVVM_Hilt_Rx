@@ -8,6 +8,7 @@ plugins {
 android {
     defaultConfig {
         applicationId "com.android.artgallery"
+        compileSdk 34
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
