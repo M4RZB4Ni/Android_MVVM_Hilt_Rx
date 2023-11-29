@@ -16,16 +16,16 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    internal fun provideAppDatabase(application: Application): com.android.data.source.local.AppDatabase {
+    internal fun provideAppDatabase(application: Application): AppDatabase {
         return Room.databaseBuilder(
             application,
-            com.android.data.source.local.AppDatabase::class.java,
-            com.android.data.source.local.AppDatabase.DB_NAME
+            AppDatabase::class.java,
+            AppDatabase.DB_NAME
         ).allowMainThreadQueries().build()
     }
 
     @Provides
-    internal fun providePhotoDao(appDatabase: com.android.data.source.local.AppDatabase): com.android.data.source.local.dao.PhotoDao {
+    internal fun providePhotoDao(appDatabase: AppDatabase): PhotoDao {
         return appDatabase.photoDao
     }
 }
