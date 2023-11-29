@@ -5,15 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.domain.model.Photo
-import com.android.artgallery.presentation.loadImage
 import com.android.presentation.databinding.HolderPhotoBinding
-import com.android.presentation.photo.PhotosAdapter.PhotoViewHolder
+import com.android.presentation.loadImage
 
-/**
- * [android.support.v7.widget.RecyclerView.Adapter] to adapt
- * [Photo] items into [RecyclerView] via [PhotoViewHolder]
- *
- */
+
 internal class PhotosAdapter(val onPhotoClick: (Long) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

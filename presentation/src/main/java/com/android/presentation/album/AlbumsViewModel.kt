@@ -13,20 +13,20 @@ import javax.inject.Inject
  *
  * */
 @HiltViewModel
-class AlbumsViewModel @Inject constructor(private val getAlbumListUseCase: com.android.domain.usecase.GetAlbumsUseCase) :
+class AlbumsViewModel @Inject constructor(private val getAlbumListUseCase: GetAlbumsUseCase) :
     ViewModel() {
 
-    val albumsReceivedLiveData = MutableLiveData<List<com.android.domain.model.Album>>()
+    val albumsReceivedLiveData = MutableLiveData<List<Album>>()
     val isLoad = MutableLiveData<Boolean>()
-    val albumData = MutableLiveData<com.android.domain.model.Album>()
+    private val albumData = MutableLiveData<Album>()
 
     init {
         isLoad.value = false
     }
 
-    val album: com.android.domain.model.Album? get() = albumData.value
+    val album: Album? get() = albumData.value
 
-    fun set(album: com.android.domain.model.Album) = run { albumData.value = album }
+    fun set(album: Album) = run { albumData.value = album }
 
     fun loadAlbums() {
         getAlbumListUseCase.execute(
