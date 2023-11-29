@@ -1,19 +1,20 @@
-package com.android.artgallery.presentation
+package com.android.presentation
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
-import coil.api.load
-import coil.decode.DataSource
-import coil.request.Request
+
+import coil.load
+import coil.request.ImageRequest
+import coil.request.SuccessResult
 
 fun ImageView.loadImage(url: String?) = this.load(url)
 
 fun ImageView.loadImage(url: String, progressBar: ProgressBar) = this.load(url) {
     crossfade(true)
-    listener(object : Request.Listener {
-        override fun onSuccess(data: Any, source: DataSource) {
-            super.onSuccess(data, source)
+    listener(object : ImageRequest.Listener {
+        override fun onSuccess(request: ImageRequest, result: SuccessResult) {
+            super.onSuccess(request, result)
             progressBar.visibility = View.GONE
         }
     })
