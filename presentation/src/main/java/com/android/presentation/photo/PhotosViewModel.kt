@@ -10,10 +10,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PhotosViewModel @Inject constructor(
-    private val getPhotosUseCase: com.android.domain.usecase.GetPhotosUseCase
+    private val getPhotosUseCase: GetPhotosUseCase
 ) : ViewModel() {
 
-    val photoListReceivedLiveData = MutableLiveData<List<com.android.domain.model.Photo>>()
+    val photoListReceivedLiveData = MutableLiveData<List<Photo>>()
     val isLoad = MutableLiveData<Boolean>()
 
     init {

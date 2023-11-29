@@ -9,11 +9,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PhotoDetailViewModel @Inject constructor(
-    private val getPhotoDetailUseCase: com.android.domain.usecase.GetPhotoDetailUseCase
+    private val getPhotoDetailUseCase: GetPhotoDetailUseCase
 ) : ViewModel() {
 
-    val photoData = MutableLiveData<com.android.domain.model.Photo>()
-    val isLoad = MutableLiveData<Boolean>()
+    val photoData = MutableLiveData<Photo>()
+    private val isLoad = MutableLiveData<Boolean>()
     val isFavorite = MutableLiveData<Boolean>()
 
     init {
