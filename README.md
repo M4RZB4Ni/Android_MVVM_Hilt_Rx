@@ -9,7 +9,7 @@ The following diagram shows the structure of this project with 3 layers:
 
 <br>
 <p align="center">
-  <img src="https://github.com/M4RZB4Ni/Android_MVVM_Hilt_Rx/blob/master/diagram.png" width="750"/>
+  <img src="https://github.com/M4RZB4Ni/Android_MVVM_Hilt_Rx/blob/master/clean_diagram.jpg" width="750"/>
 </p>
 <br>
 

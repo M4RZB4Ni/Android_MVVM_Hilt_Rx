@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -40,6 +40,9 @@ android {
         jvmTarget = '1.8'
     }
     namespace 'com.android.artgallery'
+    hilt {
+        enableAggregatingTask = true
+    }
 }
 
 dependencies {

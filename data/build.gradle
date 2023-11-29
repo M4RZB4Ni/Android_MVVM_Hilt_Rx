@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'dagger.hilt.android.plugin'
+    id 'com.google.dagger.hilt.android'
     id 'kotlin-kapt'
 }
 
@@ -21,6 +21,9 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    hilt {
+        enableAggregatingTask = true
     }
 }
 
@@ -47,4 +50,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'io.mockk:mockk:1.13.8'
+}
+kapt {
+    correctErrorTypes = true
 }
