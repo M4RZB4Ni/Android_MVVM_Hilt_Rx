@@ -4,12 +4,14 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import com.android.data.repository.AlbumRepositoryImp
-import com.android.data.repository.PhotoRepositoryImp
+import com.android.data.repository.CategoryRepositoryImpl
+import com.android.data.repository.ProductRepositoryImp
+
 import com.android.data.source.local.AppDatabase
-import com.android.data.source.remote.RetrofitService
-import com.android.domain.repository.AlbumRepository
-import com.android.domain.repository.PhotoRepository
+import com.android.data.source.remote.ProductService
+import com.android.domain.repository.CategoryRepository
+import com.android.domain.repository.ProductRepository
+
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -116,24 +118,24 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideService(retrofit: Retrofit): RetrofitService {
-        return retrofit.create(RetrofitService::class.java)
+    fun provideProductService(retrofit: Retrofit): ProductService {
+        return retrofit.create(ProductService::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideAlbumRepository(
-        retrofitService: RetrofitService
-    ): AlbumRepository {
-        return AlbumRepositoryImp(retrofitService)
+    fun provideCategoryRepository(
+        retrofitService: ProductService
+    ): CategoryRepository {
+        return CategoryRepositoryImpl(retrofitService)
     }
 
     @Singleton
     @Provides
-    fun providePhotoRepository(
+    fun provideProductRepository(
         appDatabase: AppDatabase,
-        retrofitService: RetrofitService
-    ): PhotoRepository {
-        return PhotoRepositoryImp(appDatabase, retrofitService)
+        retrofitService: ProductService
+    ): ProductRepository {
+        return ProductRepositoryImp(appDatabase, retrofitService)
     }
 }

@@ -1,11 +1,14 @@
 package com.android.data.mapper
 
-import com.android.data.source.local.entity.PhotoEntity
-import com.android.domain.model.Photo
+import com.android.data.source.local.entity.ProductEntity
+import com.android.domain.model.Product
 
-fun Photo.toEntity() = PhotoEntity(
+fun Product.toEntity() = ProductEntity(
     id = id,
     title = title,
-    url = url,
-    thumbnailUrl = thumbnailUrl
+    price = price,
+    category= category,
+    image = image,
+    rating = rating,
+    description = description
 )

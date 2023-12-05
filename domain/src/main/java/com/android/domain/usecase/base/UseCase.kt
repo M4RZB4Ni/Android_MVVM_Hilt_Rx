@@ -7,7 +7,8 @@ import io.reactivex.disposables.Disposable
  * This class is extended by SingleUseCase classes
  * to use common methods & fields
  **/
-abstract class UseCase {
+abstract class
+UseCase {
 
     protected var lastDisposable: Disposable? = null
     protected val compositeDisposable = CompositeDisposable()

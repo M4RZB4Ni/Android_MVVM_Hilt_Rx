@@ -3,19 +3,19 @@ package com.android.presentation.album
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.android.domain.model.Album
+import com.android.domain.model.Category
 import com.android.presentation.album.AlbumsAdapter.AlbumViewHolder
 import com.android.presentation.databinding.HolderAlbumBinding
 
 /**
- * This class is responsible for converting each data entry [Album]
+ * This class is responsible for converting each data entry [Category]
  * into [AlbumViewHolder] that can then be added to the AdapterView.
  *
  */
-internal class AlbumsAdapter(val onAlbumClick: (Album) -> Unit) :
+internal class AlbumsAdapter(val onAlbumClick: (Category) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val albums: MutableList<Album> = ArrayList()
+    private val albums: MutableList<Category> = ArrayList()
 
     /*
      * This method is called right when adapter is created &
@@ -35,14 +35,14 @@ internal class AlbumsAdapter(val onAlbumClick: (Album) -> Unit) :
         (holder as AlbumViewHolder).onBind(getItem(position))
     }
 
-    private fun getItem(position: Int): Album = albums[position]
+    private fun getItem(position: Int): Category = albums[position]
 
     /*
      * This method returns the size of collection that contains the items we want to display
      * */
     override fun getItemCount() = albums.size
 
-    fun addData(list: List<Album>) {
+    fun addData(list: List<Category>) {
         this.albums.clear()
         this.albums.addAll(list)
         notifyDataSetChanged()

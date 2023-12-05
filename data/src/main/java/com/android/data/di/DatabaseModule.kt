@@ -3,7 +3,7 @@ package com.android.data.di
 import android.app.Application
 import androidx.room.Room
 import com.android.data.source.local.AppDatabase
-import com.android.data.source.local.dao.PhotoDao
+import com.android.data.source.local.dao.ProductDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,7 +25,7 @@ class DatabaseModule {
     }
 
     @Provides
-    internal fun providePhotoDao(appDatabase: AppDatabase): PhotoDao {
-        return appDatabase.photoDao
+    internal fun providePhotoDao(appDatabase: AppDatabase): ProductDao {
+        return appDatabase.productDao
     }
 }

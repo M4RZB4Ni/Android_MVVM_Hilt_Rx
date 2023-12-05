@@ -2,6 +2,7 @@ package com.android.data.source.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.android.domain.model.Rating
 
 @Entity(tableName = "Product")
 data class ProductEntity(

@@ -2,41 +2,41 @@ package com.android.presentation.album
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.android.domain.model.Album
-import com.android.domain.usecase.GetAlbumsUseCase
+import com.android.domain.model.Category
+import com.android.domain.usecase.GetCategoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 /**To store & manage UI-related data in a lifecycle conscious way!
  * this class allows data to survive configuration changes such as screen rotation
- * by interacting with [GetAlbumsUseCase]
+ * by interacting with [GetCategoryUseCase]
  *
  * */
 @HiltViewModel
-class AlbumsViewModel @Inject constructor(private val getAlbumListUseCase: GetAlbumsUseCase) :
+class CategoryViewModel @Inject constructor(private val getCategoryUseCase: GetCategoryUseCase) :
     ViewModel() {
 
-    val albumsReceivedLiveData = MutableLiveData<List<Album>>()
+        val categoriesReceivedLiveData = MutableLiveData<Category>()
     val isLoad = MutableLiveData<Boolean>()
-    private val albumData = MutableLiveData<Album>()
+    private val categoryData = MutableLiveData<Category>()
 
     init {
         isLoad.value = false
     }
 
-    val album: Album? get() = albumData.value
+    val category: Category? get() = categoryData.value
 
-    fun set(album: Album) = run { albumData.value = album }
+    fun set(category: Category) = run { categoryData.value = category }
 
     fun loadAlbums() {
-        getAlbumListUseCase.execute(
+        getCategoryUseCase.execute(
             onSuccess = {
                 isLoad.value = true
-                albumsReceivedLiveData.value = it
+                categoriesReceivedLiveData.value = it
             },
             onError = {
                 it.printStackTrace()
-            }
+            },
         )
     }
 }

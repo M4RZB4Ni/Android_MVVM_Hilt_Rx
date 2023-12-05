@@ -1,4 +1,4 @@
-package com.android.data.source.local.entity
+package com.android.domain.model
 
 data class Rating(
     var rate:Double,
