@@ -24,7 +24,7 @@ class PhotosFragment : Fragment() {
         binding = FragmentPhotosBinding.inflate(inflater, container, false)
         adapter = PhotosAdapter { gotoDetailPageByPhotoId(it) }
         binding.photosRecyclerView.adapter = adapter
-        viewModel.loadPhotos(arguments?.getLong(KEY_ALBUM_ID))
+        viewModel.loadPhotos(arguments?.getString(KEY_ALBUM_ID))
         return binding.root
     }
 
@@ -39,7 +39,7 @@ class PhotosFragment : Fragment() {
                 }
             }
 
-            photoListReceivedLiveData.observe(viewLifecycleOwner) {
+            productListReceivedLiveData.observe(viewLifecycleOwner) {
                 it?.let {
                     adapter?.addData(it)
                 }
@@ -47,7 +47,7 @@ class PhotosFragment : Fragment() {
         }
     }
 
-    private fun gotoDetailPageByPhotoId(id: Long) {
+    private fun gotoDetailPageByPhotoId(id: Int) {
         activity?.supportFragmentManager?.beginTransaction()?.replace(
             R.id.gallery_container,
             PhotoDetailFragment.newInstance(id),
@@ -65,9 +65,9 @@ class PhotosFragment : Fragment() {
         private const val KEY_ALBUM_ID = "KEY_ALBUM_ID"
 
         @JvmStatic
-        fun newInstance(id: Long) = PhotosFragment().apply {
+        fun newInstance(category: String) = PhotosFragment().apply {
             arguments = Bundle().apply {
-                putLong(KEY_ALBUM_ID, id)
+                putString(KEY_ALBUM_ID, category)
             }
         }
     }

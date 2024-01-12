@@ -3,6 +3,7 @@ package com.android.data.di
 import android.app.Application
 import androidx.room.Room
 import com.android.data.source.local.AppDatabase
+import com.android.data.source.local.dao.CategoryDao
 import com.android.data.source.local.dao.ProductDao
 import dagger.Module
 import dagger.Provides
@@ -25,7 +26,12 @@ class DatabaseModule {
     }
 
     @Provides
-    internal fun providePhotoDao(appDatabase: AppDatabase): ProductDao {
+    internal fun provideProductDao(appDatabase: AppDatabase): ProductDao {
         return appDatabase.productDao
+    }
+
+    @Provides
+    internal fun provideCategoryDao(appDatabase: AppDatabase): CategoryDao{
+        return appDatabase.categoryDao
     }
 }

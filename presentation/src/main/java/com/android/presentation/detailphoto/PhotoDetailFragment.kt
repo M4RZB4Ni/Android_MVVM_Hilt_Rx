@@ -26,17 +26,17 @@ class PhotoDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val photoId = arguments?.getLong(KEY_PHOTO_ID) ?: return
+        val photoId = arguments?.getInt(KEY_PHOTO_ID) ?: return
         with(viewModel) {
             getDetail(photoId)
             checkFavoriteStatus(photoId)
 
-            photoData.observe(viewLifecycleOwner) {
+            productData.observe(viewLifecycleOwner) {
                 binding.detailTitleTextView.text = it?.title
-                binding.detailToolbarImageView.loadImage(it?.url)
+//                binding.detailToolbarImageView.loadImage(it?.images?.get(0))
             }
 
-            isFavorite.observe(viewLifecycleOwner) {
+            isInBasket.observe(viewLifecycleOwner) {
                 it?.let {
                     binding.detailFab.setImageResource(
                         if (it) R.drawable.ic_star_full_vector else R.drawable.ic_star_empty_white_vector
@@ -54,9 +54,9 @@ class PhotoDetailFragment : Fragment() {
         val FRAGMENT_NAME: String = PhotoDetailFragment::class.java.name
         private const val KEY_PHOTO_ID = "KEY_PHOTO_ID"
 
-        fun newInstance(photoId: Long) = PhotoDetailFragment().apply {
+        fun newInstance(photoId: Int) = PhotoDetailFragment().apply {
             arguments = Bundle().apply {
-                putLong(KEY_PHOTO_ID, photoId)
+                putInt(KEY_PHOTO_ID, photoId)
             }
         }
     }

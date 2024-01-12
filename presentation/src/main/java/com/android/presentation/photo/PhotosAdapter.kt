@@ -4,15 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.android.domain.model.Photo
+import com.android.domain.model.Product
 import com.android.presentation.databinding.HolderPhotoBinding
 import com.android.presentation.loadImage
 
 
-internal class PhotosAdapter(val onPhotoClick: (Long) -> Unit) :
+internal class PhotosAdapter(val onPhotoClick: (Int) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val photos: MutableList<Photo> = ArrayList()
+    private val products: MutableList<Product> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val holderPhotoBinding = HolderPhotoBinding.inflate(
@@ -25,28 +25,28 @@ internal class PhotosAdapter(val onPhotoClick: (Long) -> Unit) :
         (holder as PhotoViewHolder).onBind(getItem(position))
     }
 
-    private fun getItem(position: Int): Photo = photos[position]
+    private fun getItem(position: Int): Product = products[position]
 
-    override fun getItemCount(): Int = photos.size
+    override fun getItemCount(): Int = products.size
 
-    fun addData(list: List<Photo>) {
-        this.photos.clear()
-        this.photos.addAll(list)
+    fun addData(list: List<Product>) {
+        this.products.clear()
+        this.products.addAll(list)
         notifyDataSetChanged()
     }
 
     inner class PhotoViewHolder(private val binding: HolderPhotoBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(photo: Photo) {
+        fun onBind(product: Product) {
             with(binding) {
                 photoProgressBar.visibility = View.VISIBLE
-                photoTextView.text = photo.title
-                photoImageView.loadImage(photo.url, binding.photoProgressBar)
+                photoTextView.text = product.title
+//                photoImageView.loadImage(product.images!![0], binding.photoProgressBar)
             }
 
             itemView.setOnClickListener {
-                onPhotoClick(photo.id)
+                onPhotoClick(product.id)
             }
         }
     }

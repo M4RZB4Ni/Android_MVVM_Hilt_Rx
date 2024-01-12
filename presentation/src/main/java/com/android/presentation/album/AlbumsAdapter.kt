@@ -12,7 +12,7 @@ import com.android.presentation.databinding.HolderAlbumBinding
  * into [AlbumViewHolder] that can then be added to the AdapterView.
  *
  */
-internal class AlbumsAdapter(val onAlbumClick: (Category) -> Unit) :
+internal class AlbumsAdapter(val onAlbumClick: (List<Category>) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val albums: MutableList<Category> = ArrayList()
@@ -42,21 +42,21 @@ internal class AlbumsAdapter(val onAlbumClick: (Category) -> Unit) :
      * */
     override fun getItemCount() = albums.size
 
-    fun addData(list: List<Category>) {
+    fun addData(categories: List<Category>) {
         this.albums.clear()
-        this.albums.addAll(list)
+        this.albums.addAll(categories)
         notifyDataSetChanged()
     }
 
     inner class AlbumViewHolder(private val binding: HolderAlbumBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(album: Album) {
-            binding.holderAlbumTextView.text = album.title
-
-            itemView.setOnClickListener {
-                onAlbumClick.invoke(album)
-            }
+        fun onBind(category: Category) {
+//            binding.holderAlbumTextView.text = category
+//
+//            itemView.setOnClickListener {
+//                onAlbumClick.invoke(album)
+//            }
         }
     }
 }

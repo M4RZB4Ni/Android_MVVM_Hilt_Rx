@@ -1,3 +1,9 @@
 package com.android.domain.model
 
-class Category(): ArrayList<String>()
+import java.io.Serializable
+
+data class Category(
+    val id:Int,
+    val name:String,
+    val image:String
+)

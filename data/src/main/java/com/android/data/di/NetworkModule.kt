@@ -27,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+const val BASE_URL = "https://api.escuelajs.co/api/v1/"
 
 @InstallIn(SingletonComponent::class)
 @Module

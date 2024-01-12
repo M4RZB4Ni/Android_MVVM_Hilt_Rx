@@ -16,17 +16,17 @@ import javax.inject.Inject
 class CategoryViewModel @Inject constructor(private val getCategoryUseCase: GetCategoryUseCase) :
     ViewModel() {
 
-        val categoriesReceivedLiveData = MutableLiveData<Category>()
+        val categoriesReceivedLiveData = MutableLiveData<List<Category>>()
     val isLoad = MutableLiveData<Boolean>()
-    private val categoryData = MutableLiveData<Category>()
+    private val categoryData = MutableLiveData<List<Category>>()
 
     init {
         isLoad.value = false
     }
 
-    val category: Category? get() = categoryData.value
+    val category: List<Category>? get() = categoryData.value
 
-    fun set(category: Category) = run { categoryData.value = category }
+    fun set(categories: List<Category>) = run { categoryData.value = categories }
 
     fun loadAlbums() {
         getCategoryUseCase.execute(

@@ -23,7 +23,7 @@ class CategoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentAlbumsBinding.inflate(inflater, container, false)
-        adapter = AlbumsAdapter { navigateToPhotosPage(it) }
+        adapter = AlbumsAdapter {  }
         binding.albumsRecyclerView.adapter = adapter
         viewModel.loadAlbums()
         return binding.root
@@ -47,13 +47,13 @@ class CategoryFragment : Fragment() {
         }
     }
 
-    private fun navigateToPhotosPage(category: Category) {
-        activity?.supportFragmentManager?.beginTransaction()?.replace(
-            R.id.gallery_container,
-            PhotosFragment.newInstance(category.id),
-            PhotosFragment.FRAGMENT_NAME
-        )?.addToBackStack(PhotosFragment.FRAGMENT_NAME)?.commitAllowingStateLoss()
-    }
+//    private fun navigateToPhotosPage(category: Category) {
+//        activity?.supportFragmentManager?.beginTransaction()?.replace(
+//            R.id.gallery_container,
+//            PhotosFragment.newInstance(category.id),
+//            PhotosFragment.FRAGMENT_NAME
+//        )?.addToBackStack(PhotosFragment.FRAGMENT_NAME)?.commitAllowingStateLoss()
+//    }
 
     override fun onDetach() {
         super.onDetach()

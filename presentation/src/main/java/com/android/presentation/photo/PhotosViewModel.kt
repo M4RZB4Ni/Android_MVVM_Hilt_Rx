@@ -2,31 +2,32 @@ package com.android.presentation.photo
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.android.domain.model.Photo
-import com.android.domain.usecase.GetPhotosUseCase
+import com.android.domain.model.Category
+import com.android.domain.model.Product
+import com.android.domain.usecase.GetProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 
 @HiltViewModel
 class PhotosViewModel @Inject constructor(
-    private val getPhotosUseCase: GetPhotosUseCase
+    private val getPhotosUseCase: GetProductsUseCase
 ) : ViewModel() {
 
-    val photoListReceivedLiveData = MutableLiveData<List<Photo>>()
+    val productListReceivedLiveData = MutableLiveData<List<Product>>()
     val isLoad = MutableLiveData<Boolean>()
 
     init {
         isLoad.value = false
     }
 
-    fun loadPhotos(id: Long?) {
-        if (id == null) return
-        getPhotosUseCase.saveAlbumId(id)
+    fun loadPhotos(category: String?) {
+        if (category == null) return
+        getPhotosUseCase.saveCategory(category)
         getPhotosUseCase.execute(
             onSuccess = {
                 isLoad.value = true
-                photoListReceivedLiveData.value = it
+                productListReceivedLiveData.value = it
             },
             onError = {
                 it.printStackTrace()

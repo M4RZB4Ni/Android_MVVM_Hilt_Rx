@@ -2,31 +2,31 @@ package com.android.presentation.detailphoto
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.android.domain.model.Photo
-import com.android.domain.usecase.GetPhotoDetailUseCase
+import com.android.domain.model.Product
+import com.android.domain.usecase.GetProductDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class PhotoDetailViewModel @Inject constructor(
-    private val getPhotoDetailUseCase: GetPhotoDetailUseCase
+    private val getProductDetailUseCase: GetProductDetailUseCase
 ) : ViewModel() {
 
-    val photoData = MutableLiveData<Photo>()
+    val productData = MutableLiveData<Product>()
     private val isLoad = MutableLiveData<Boolean>()
-    val isFavorite = MutableLiveData<Boolean>()
+    val isInBasket = MutableLiveData<Boolean>()
 
     init {
         isLoad.value = false
     }
 
-    fun getDetail(id: Long?) {
+    fun getDetail(id: Int?) {
         if (id == null) return
-        getPhotoDetailUseCase.savePhotoId(id)
-        getPhotoDetailUseCase.execute(
+        getProductDetailUseCase.saveProductId(id)
+        getProductDetailUseCase.execute(
             onSuccess = {
                 isLoad.value = true
-                photoData.value = it
+                productData.value = it
             },
             onError = {
                 it.printStackTrace()
@@ -35,19 +35,19 @@ class PhotoDetailViewModel @Inject constructor(
     }
 
     fun updateFavoriteStatus() {
-        photoData.value?.let { photo ->
-            if (isFavorite.value == true) {
-                getPhotoDetailUseCase.deleteAsFavorite(photo)
+        productData.value?.let { product ->
+            if (isInBasket.value == true) {
+                getProductDetailUseCase.removeFromBasket(product)
             } else {
-                getPhotoDetailUseCase.addAsFavorite(photo)
+                getProductDetailUseCase.addToBasket(product)
             }
-            isFavorite.value?.let {
-                isFavorite.value = !it
+            isInBasket.value?.let {
+                isInBasket.value = !it
             }
         }
     }
 
-    fun checkFavoriteStatus(photoId: Long) {
-        isFavorite.value = getPhotoDetailUseCase.isFavorite(photoId)
+    fun checkFavoriteStatus(productId: Int) {
+        isInBasket.value = getProductDetailUseCase.isInBasket(productId)
     }
 }

@@ -6,9 +6,10 @@ import com.android.domain.usecase.base.SingleUseCase
 import io.reactivex.Single
 import javax.inject.Inject
 
-class GetCategoryUseCase @Inject constructor(private val categoryRepository: CategoryRepository):SingleUseCase<Category>() {
-    override fun buildUseCaseSingle(): Single<Category> {
-        return categoryRepository.getCategories()
+class GetCategoryUseCase @Inject constructor(private val repository: CategoryRepository):SingleUseCase<List<Category>>() {
+    override fun buildUseCaseSingle(): Single<List<Category>> {
+        return  repository.getCategories()
     }
+
 
 }

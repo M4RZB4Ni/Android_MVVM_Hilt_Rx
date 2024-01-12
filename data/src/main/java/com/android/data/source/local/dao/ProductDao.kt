@@ -13,7 +13,7 @@ import io.reactivex.Single
 interface ProductDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertProduct(productEntity: ProductEntity): Int
+    fun insertProduct(productEntity: ProductEntity): Long
 
     @Query("SELECT * FROM Product")
     fun getAll():MutableList<ProductEntity>
