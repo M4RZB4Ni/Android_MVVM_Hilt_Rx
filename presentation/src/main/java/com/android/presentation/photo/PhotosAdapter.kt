@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.domain.model.Product
 import com.android.presentation.databinding.HolderPhotoBinding
-import com.android.presentation.loadImage
 
 
 internal class PhotosAdapter(val onPhotoClick: (Int) -> Unit) :

@@ -1,6 +1,5 @@
 package com.android.domain.usecase
 
-import com.android.domain.model.Category
 import com.android.domain.model.Product
 import com.android.domain.repository.ProductRepository
 import com.android.domain.usecase.base.SingleUseCase

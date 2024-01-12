@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.android.data.source.local.entity.ProductEntity
-import io.reactivex.Single
 
 @Dao
 interface ProductDao {

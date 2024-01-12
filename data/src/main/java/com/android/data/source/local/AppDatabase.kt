@@ -3,12 +3,12 @@ package com.android.data.source.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.android.data.source.local.dao.ProductDao
-import com.android.data.source.local.entity.ProductEntity
 import com.android.data.source.local.converters.CategoryConverter
 import com.android.data.source.local.converters.ImageConvertors
 import com.android.data.source.local.dao.CategoryDao
+import com.android.data.source.local.dao.ProductDao
 import com.android.data.source.local.entity.CategoryEntity
+import com.android.data.source.local.entity.ProductEntity
 
 /**
  * To manage data items that can be accessed, updated
