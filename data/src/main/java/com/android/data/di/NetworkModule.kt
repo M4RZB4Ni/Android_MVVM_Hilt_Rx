@@ -8,6 +8,7 @@ import com.android.data.repository.CategoryRepositoryImpl
 import com.android.data.repository.ProductRepositoryImp
 
 import com.android.data.source.local.AppDatabase
+import com.android.data.source.remote.CategoryService
 import com.android.data.source.remote.ProductService
 import com.android.domain.repository.CategoryRepository
 import com.android.domain.repository.ProductRepository
@@ -125,9 +126,10 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideCategoryRepository(
-        retrofitService: ProductService
+        retrofitService: CategoryService,
+        appDatabase: AppDatabase
     ): CategoryRepository {
-        return CategoryRepositoryImpl(retrofitService)
+        return CategoryRepositoryImpl(retrofitService,appDatabase)
     }
 
     @Singleton
