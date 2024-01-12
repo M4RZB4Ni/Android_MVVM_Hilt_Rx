@@ -6,10 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.android.domain.model.Category
-import com.android.presentation.R
 import com.android.presentation.databinding.FragmentAlbumsBinding
-import com.android.presentation.photo.PhotosFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

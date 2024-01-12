@@ -2,7 +2,6 @@ package com.android.presentation.photo
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.android.domain.model.Category
 import com.android.domain.model.Product
 import com.android.domain.usecase.GetProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
