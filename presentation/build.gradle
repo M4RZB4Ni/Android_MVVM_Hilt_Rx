@@ -43,6 +43,7 @@ dependencies {
 
     implementation 'androidx.compose.material3:material3'
     implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3-window-size-class'
 
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'com.google.android.material:material:1.11.0'
@@ -58,9 +59,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
     kapt 'com.google.dagger:hilt-android-compiler:2.50'
 
-    androidTestImplementation  'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     androidTestImplementation composeBom
     debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
 
 }
 kapt {
