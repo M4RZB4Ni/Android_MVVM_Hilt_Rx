@@ -7,8 +7,6 @@ import retrofit2.http.Path
 
 interface ProductService {
 
-
-
     @GET("/products/{id}")
     fun getProductDetail(@Path("id") id:Int):Single<Product>
 

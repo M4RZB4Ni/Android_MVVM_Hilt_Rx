@@ -122,12 +122,17 @@ class NetworkModule {
     fun provideProductService(retrofit: Retrofit): ProductService {
         return retrofit.create(ProductService::class.java)
     }
+    @Singleton
+    @Provides
+    fun provideCategoryService(retrofit: Retrofit): CategoryService {
+        return retrofit.create(CategoryService::class.java)
+    }
 
     @Singleton
     @Provides
     fun provideCategoryRepository(
         retrofitService: CategoryService,
-        appDatabase: AppDatabase
+        appDatabase: AppDatabase,
     ): CategoryRepository {
         return CategoryRepositoryImpl(retrofitService,appDatabase)
     }

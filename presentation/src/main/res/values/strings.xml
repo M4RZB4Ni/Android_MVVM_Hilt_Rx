@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ArtGallery</string>
+    <string name="title_activity_test_compose">TestActivityCompose</string>
 </resources>
